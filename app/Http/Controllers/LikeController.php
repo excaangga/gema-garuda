@@ -20,7 +20,7 @@ class LikeController extends BaseController
         $like->id_post = $post->id;
         $like->save();
 
-        return $this->sendResponse($like, 'Post liked successfully.');
+        return $this->sendResponse(new LikeResource($like), 'Post liked successfully.');
     }
 
     public function unlikePost(Request $request, Post $post): JsonResponse{
@@ -34,11 +34,6 @@ class LikeController extends BaseController
         }
 
         return $this->sendError('Like not found.');
-    }
-
-    public function countLikes(Post $post): JsonResponse{
-        $likesCount = Like::where('id_post', $post->id)->count();
-        return $this->sendResponse(['likes_count' => $likesCount], 'Data retrieved successfully.');
     }
 
     public function listLikes(Post $post): JsonResponse{

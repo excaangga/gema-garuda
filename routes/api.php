@@ -7,6 +7,7 @@ use App\Http\Controllers\UserCategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 use App\Enums\TokenAbility;
 
 /*
@@ -57,6 +58,8 @@ Route::middleware('auth:sanctum', 'checkRoles: 1, 2, 3, 4, 5, 6', 'ability:' . T
 
     Route::post('like/{post}', 'App\Http\Controllers\LikeController@likePost');
     Route::post('unlike/{post}', 'App\Http\Controllers\LikeController@unlikePost');
-    Route::post('countLikes/{post}', 'App\Http\Controllers\LikeController@countLikes');
     Route::post('listLikes/{post}', 'App\Http\Controllers\LikeController@listLikes');
+
+    Route::post('comment/{post}', 'App\Http\Controllers\CommentController@makeComment');
+    Route::post('listComments/{post}', 'App\Http\Controllers\CommentController@listComments');
 });
