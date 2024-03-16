@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserCategoryController;
+use App\Http\Controllers\UserController;
 use App\Enums\TokenAbility;
 
 /*
@@ -36,4 +37,13 @@ Route::middleware('auth:sanctum', 'checkRoles: 1', 'ability:' . TokenAbility::AC
     Route::post('userCategory', 'App\Http\Controllers\UserCategoryController@store');
     Route::put('userCategory/{userCategory}', 'App\Http\Controllers\UserCategoryController@update');
     Route::delete('userCategory/{userCategory}', 'App\Http\Controllers\UserCategoryController@delete');
+
+    Route::delete('users/{user}', 'App\Http\Controllers\UserController@delete');
+});
+
+// all users
+Route::middleware('auth:sanctum', 'checkRoles: 1, 2, 3, 4, 5, 6', 'ability:' . TokenAbility::ACCESS_API->value)->group( function () {
+    Route::get('users', 'App\Http\Controllers\UserController@index');
+    Route::get('users/{user}', 'App\Http\Controllers\UserController@show');
+    Route::put('users/{user}', 'App\Http\Controllers\UserController@update');
 });
