@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserCategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 use App\Enums\TokenAbility;
 
 /*
@@ -46,4 +47,10 @@ Route::middleware('auth:sanctum', 'checkRoles: 1, 2, 3, 4, 5, 6', 'ability:' . T
     Route::get('users', 'App\Http\Controllers\UserController@index');
     Route::get('users/{user}', 'App\Http\Controllers\UserController@show');
     Route::put('users/{user}', 'App\Http\Controllers\UserController@update');
+
+    Route::get('post', 'App\Http\Controllers\PostController@index');
+    Route::get('post/{post}', 'App\Http\Controllers\PostController@show');
+    Route::post('post', 'App\Http\Controllers\PostController@store');
+    Route::put('post/{post}', 'App\Http\Controllers\PostController@update');
+    Route::delete('post/{post}', 'App\Http\Controllers\PostController@delete');
 });

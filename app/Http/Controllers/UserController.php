@@ -44,4 +44,14 @@ class UserController extends BaseController
         
         return $this->sendResponse(new UserResource($user), 'Data updated successfully.');
     }
+
+    public function delete(User $user): JsonResponse{
+        if(is_null($user)){
+            return $this->sendError('Data not found.');
+        }
+
+        $user->delete();
+
+        return $this->sendResponse([], 'Data deleted successfully.');
+    }
 }
