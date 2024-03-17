@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+            $table->string('tag');
             $table->text('content_text');
             $table->text('content_image_link')->nullable();
         });

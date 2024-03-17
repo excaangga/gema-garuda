@@ -36,6 +36,7 @@ class PostController extends BaseController
         
         $post = new Post;
         $post->id_user = Auth::id();
+        $post->tag = $input['tag'];
         $post->content_text = $input['content_text'];
         $post->content_image_link = $input['content_image_link'];
         $post->save();
