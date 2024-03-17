@@ -28,4 +28,13 @@ class CommentController extends BaseController
         $comment = Comment::where('id_post', $post->id)->get();
         return $this->sendResponse(CommentResource::collection($comment), 'Data retrieved successfully.');
     }
+
+    public function delete(Comment $comment): JsonResponse{
+        if(is_null($comment)){
+            return $this->sendError('Data not found.');
+        }
+        $comment->delete();
+
+        return $this->sendResponse([], 'Data deleted successfully.');
+    }
 }

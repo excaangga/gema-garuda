@@ -42,6 +42,8 @@ Route::middleware('auth:sanctum', 'checkRoles: 1', 'ability:' . TokenAbility::AC
     Route::delete('userCategory/{userCategory}', 'App\Http\Controllers\UserCategoryController@delete');
 
     Route::delete('users/{user}', 'App\Http\Controllers\UserController@delete');
+
+    Route::delete('comment/{comment}', 'App\Http\Controllers\CommentController@delete');
 });
 
 // all users
@@ -62,4 +64,8 @@ Route::middleware('auth:sanctum', 'checkRoles: 1, 2, 3, 4, 5, 6', 'ability:' . T
 
     Route::post('comment/{post}', 'App\Http\Controllers\CommentController@makeComment');
     Route::post('listComments/{post}', 'App\Http\Controllers\CommentController@listComments');
+
+    Route::post('follow/{user}', 'App\Http\Controllers\FollowController@follow');
+    Route::post('unfollow/{user}', 'App\Http\Controllers\FollowController@unfollow');
+    Route::post('listFollowers/{user}', 'App\Http\Controllers\FollowController@listFollowers');
 });
