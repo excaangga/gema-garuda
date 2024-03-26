@@ -26,7 +26,11 @@ class RegisterController extends BaseController
             'password' => 'required',
             'c_password' => 'required|same:password',
             'nickname' => 'required',
-            'id_category' => 'required'
+            'id_category' => 'required',
+            'id_province' => 'required',
+            'id_regency' => 'required',
+            'id_district' => 'required',
+            'id_village' => 'required'
         ]);
    
         if($validator->fails()){

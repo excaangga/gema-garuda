@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('nickname')->unique();
             $table->foreignId('id_category')->constrained('user_categories')->onDelete('cascade')->default('6');
+            // fetched from emsifa's api
+            $table->string('id_province');
+            $table->string('id_regency');
+            $table->string('id_district');
+            $table->string('id_village');
             $table->text('photo_url')->nullable();
             $table->text('description')->nullable();
             $table->string('email')->unique();

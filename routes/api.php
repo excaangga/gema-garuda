@@ -35,11 +35,13 @@ Route::middleware('auth:sanctum', 'ability:' . TokenAbility::ISSUE_ACCESS_TOKEN-
     Route::get('refreshToken', [RegisterController::class, 'refreshToken']);
 });
 
+// pre-run this to seed the data
+Route::post('userCategory', 'App\Http\Controllers\UserCategoryController@store');
+
 // only superadmin
 Route::middleware('auth:sanctum', 'checkRoles: 1', 'ability:' . TokenAbility::ACCESS_API->value)->group( function () {
     Route::get('userCategory', 'App\Http\Controllers\UserCategoryController@index');
     Route::get('userCategory/{userCategory}', 'App\Http\Controllers\UserCategoryController@show');
-    Route::post('userCategory', 'App\Http\Controllers\UserCategoryController@store');
     Route::put('userCategory/{userCategory}', 'App\Http\Controllers\UserCategoryController@update');
     Route::delete('userCategory/{userCategory}', 'App\Http\Controllers\UserCategoryController@delete');
 

@@ -40,6 +40,10 @@ class UserController extends BaseController
         $user->nickname = $input['nickname'];
         $user->photo_url = $input['photo_url'];
         $user->description = $input['description'];
+        $user->id_province = $input['id_province'];
+        $user->id_regency = $input['id_regency'];
+        $user->id_district = $input['id_district'];
+        $user->id_village = $input['id_village'];
         $user->save();
         
         return $this->sendResponse(new UserResource($user), 'Data updated successfully.');

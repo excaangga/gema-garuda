@@ -24,6 +24,10 @@ class User extends Authenticatable
         'password',
         'nickname',
         'id_category',
+        'id_province',
+        'id_regency',
+        'id_district',
+        'id_village',
         'photo_url',
         'description'
     ];
